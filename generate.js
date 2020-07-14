@@ -36,7 +36,9 @@ function getFileContent(c, depth, path) {
 readDirSync(root, list);
 fs.writeFileSync(
     'README.md',
-    `# LeetCode Records\r\n${getFileContent(list, 1)}`,
+    `# LeetCode Records
+    leetCode做题记录📝
+    ${getFileContent(list, 1)}`,
     (err) => {
         if (err) console.log(err);
         console.log('success!');

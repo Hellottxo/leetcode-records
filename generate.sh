@@ -6,7 +6,7 @@ set -e
 # 生成README
 node generate.js
 
-git add .
+git add README.md
 git commit -m 'docs📖: generate README'
 git push
 
