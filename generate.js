@@ -27,7 +27,7 @@ function getFileContent(c, depth, path) {
             res += `\r\n${(' ').padStart(depth + 1, '#')}${key}${getFileContent(value, depth + 1, `${path || ''}/${key}`)}`;
         }
         if (depth === 3) {
-            res += `\r\n- 💡[${key}](${url}${path}/${key})`;
+            res += `\r\n- 💡 [${key}](${url}${path}/${key})`;
         }
     });
     return `${res}\r\n`;
