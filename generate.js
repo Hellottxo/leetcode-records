@@ -29,7 +29,7 @@ function getFileContent(c) {
     let res = space;
     Object.entries(c).forEach(([key, value]) => {
         if (key === 'util') return;
-        res += `${space}# ${EMOJI[key]} ${key}`;
+        res += `${space}# ${EMOJI[key]}${key}`;
         value.forEach((e) => {
             res += `${space}- [${e}](${URL}${key}/${e})${space}`
         })
@@ -44,7 +44,7 @@ fs.writeFileSync(
 [leetcode](https://leetcode-cn.com/)算法题记录📝
 | Easy | Middle | Hard |
 | ---- | ------ | ---- |
-| [😊](##easy)    | [🤔️](#middle)      | [😢](#hard)    |
+| [😊](##😊easy)    | [🤔️](##🤔️middle)      | [😢](##😢hard)    |
     ${getFileContent(list)}`,
     (err) => {
         if (err) console.log(err);
