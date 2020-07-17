@@ -2,33 +2,37 @@
 const fs = require("fs");
 const path = require("path");
 
-const root = path.join(__dirname);
-const url = 'https://github.com/Hellottxo/leetcode-records/blob/master';
+const root = path.join(__dirname, './JS-solutions');
+const URL = 'https://github.com/Hellottxo/leetcode-records/blob/master/JS-solutions';
+const EMOJI = {
+    easy: '😊',
+    middle: '🤔️',
+    hard: '😢'
+}
 const list = {};
 
 function readDirSync(path, parent) {
     const pa = fs.readdirSync(path);
     pa.forEach((ele) => {
         const info = fs.statSync(path + "/" + ele)
-        if (info.isDirectory() && /^[^.]/.test(ele)) {
-            parent[ele] = {};
+        if (info.isDirectory()) {
+            parent[ele] = [];
             readDirSync(path + "/" + ele, parent[ele]);
         } else {
-            const reg = /Q\d+/;
-            if (reg.test(ele)) parent[ele] = true;
+            parent.push(ele);
         }
     })
 }
 
-function getFileContent(c, depth, path) {
-    let res = `\r\n`;
+function getFileContent(c) {
+    const space = `\r\n`;
+    let res = space;
     Object.entries(c).forEach(([key, value]) => {
-        if (depth < 3 && Object.values(value).length > 0) {
-            res += `\r\n${(' ').padStart(depth + 1, '#')}${key}${getFileContent(value, depth + 1, `${path || ''}/${key}`)}`;
-        }
-        if (depth === 3) {
-            res += `\r\n- 💡 [${key}](${url}${path}/${key})`;
-        }
+        if (key === 'util') return;
+        res += `${space}# ${EMOJI[key]} ${key}`;
+        value.forEach((e) => {
+            res += `${space}- [${e}](${URL}${key}/${e})${space}`
+        })
     });
     return `${res}\r\n`;
 }
@@ -36,9 +40,12 @@ function getFileContent(c, depth, path) {
 readDirSync(root, list);
 fs.writeFileSync(
     'README.md',
-    `# LeetCode Records
-    leetCode做题记录📝
-    ${getFileContent(list, 1)}`,
+    `# Leetcode Records
+[leetcode](https://leetcode-cn.com/)算法题记录📝
+| Easy | Middle | Hard |
+| ---- | ------ | ---- |
+| [😊](##easy)    | [🤔️](#middle)      | [😢](#hard)    |
+    ${getFileContent(list)}`,
     (err) => {
         if (err) console.log(err);
         console.log('success!');
