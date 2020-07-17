@@ -2,10 +2,10 @@
 [leetcode](https://leetcode-cn.com/)算法题记录📝
 | Easy | Middle | Hard |
 | ---- | ------ | ---- |
-| [😊](##easy)    | [🤔️](#middle)      | [😢](#hard)    |
+| [😊](##😊easy)    | [🤔️](##🤔️middle)      | [😢](##😢hard)    |
     
 
-# 😊 easy
+# 😊easy
 - [Q1010.js](https://github.com/Hellottxo/leetcode-records/blob/master/JS-solutionseasy/Q1010.js)
 
 - [Q1013.js](https://github.com/Hellottxo/leetcode-records/blob/master/JS-solutionseasy/Q1013.js)
@@ -36,7 +36,7 @@
 
 - [Q897.js](https://github.com/Hellottxo/leetcode-records/blob/master/JS-solutionseasy/Q897.js)
 
-# 😢 hard
+# 😢hard
 - [Q466.js](https://github.com/Hellottxo/leetcode-records/blob/master/JS-solutionshard/Q466.js)
 
 - [Q870.js](https://github.com/Hellottxo/leetcode-records/blob/master/JS-solutionshard/Q870.js)
@@ -45,7 +45,7 @@
 
 - [Q906.js](https://github.com/Hellottxo/leetcode-records/blob/master/JS-solutionshard/Q906.js)
 
-# 🤔️ middle
+# 🤔️middle
 - [Q1011.js](https://github.com/Hellottxo/leetcode-records/blob/master/JS-solutionsmiddle/Q1011.js)
 
 - [Q1026.js](https://github.com/Hellottxo/leetcode-records/blob/master/JS-solutionsmiddle/Q1026.js)
