@@ -38,6 +38,38 @@ while(arr.length > 0){
 return root
 }
 
+// 字典树
+var getTrie = function(words){
+    let root = new TrieNode("#",false)
+    for(let word of words){
+        root.add(word)
+    }
+
+    return root
+}
+
+var TrieNode = function(val,isEnd){
+    this.val = val
+    this.isEnd = isEnd
+    this.childMap = {}
+    this.size = 0
+}
+
+/**
+ * @param {string} str
+ */
+TrieNode.prototype.add = function(str){
+    if(str.length == 0) return
+    let child = this.childMap[str[0]]
+    if(!child){
+        child = new TrieNode(str[0],0)
+        this.childMap[str[0]] = child
+    }
+
+    if(str.length == 1) child.isEnd++
+    child.add(str.slice(1))
+}
+
 module.exports = {
     assert,getTree
 }
