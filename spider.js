@@ -71,7 +71,7 @@ const getQuestionsDetails = async (tasks) => {
             return {
               dir: e.dir,
               content: items[1] ? `# ${e.title}
-    ${items[1].innerText}
+${items[1].innerText}
 ${e.content}` : ''
             };
           }, DETAIL_SELECTOR, tasks[elem]);
