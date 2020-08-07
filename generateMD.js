@@ -48,14 +48,14 @@ const initialize = async () => {
     const { title, content } = await getDetailByURL(e.url);
     const name = `${e.id}. ${title}`.trim();
     fs.writeFileSync(
-      `docs/${e.level}/${name}.md`,
+      `docs/${e.level}/${e.id}.md`,
       `# ${name}
 ${content}
 ${e.solutions}
       `
     );
     config_map[e.level] += `
-          '${e.level}/${name}',`
+          '${e.level}/${e.id}',`
   }));
   const configText = getConfig(config_map.easy, config_map.middle, config_map.hard);
   fs.writeFileSync(configDir, configText);
@@ -70,7 +70,19 @@ meta:
   - name: js/leetcode
     content: js/leetcode
 ---`
-    )
+    );
+  fs.writeFileSync(
+    './docs/.vuepress/styles/palette.styl',
+    `$accentColor = #f48024;
+.content__default pre {
+    color: #999;
+}
+
+.navbar .site-name {
+    color: #f48024;
+}
+    `
+    );
 }
 
 
