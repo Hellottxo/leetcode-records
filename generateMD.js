@@ -5,6 +5,11 @@ const { getConfig } = require('./getConfig');
 
 const solutionsDir = path.join(__dirname, './JS-solutions');
 const configDir = path.join(__dirname, './docs/.vuepress/config.js');
+const EMOJI = {
+  easy: '😊',
+  middle: '🤔️',
+  hard: '😢'
+}
 
 const readDirSync = (path, level) => {
   let res = [];
@@ -39,11 +44,9 @@ const initialize = async () => {
     ...question_map[v.id],
   }));
   
-  tasks.forEach(async (e) => {
+  await Promise.all(tasks.map(async (e) => {
     const { title, content } = await getDetailByURL(e.url);
     const name = `${e.id}. ${title}`.trim();
-    config_map[e.level] += `
-    '${e.level}/${title}',`
     fs.writeFileSync(
       `docs/${e.level}/${name}.md`,
       `# ${name}
@@ -51,11 +54,13 @@ ${content}
 ${e.solutions}
       `
     );
-  });
+    config_map[e.level] += `
+          '${e.level}/${name}',`
+  }));
   const configText = getConfig(config_map.easy, config_map.middle, config_map.hard);
   fs.writeFileSync(configDir, configText);
   fs.writeFileSync(
-    '.docs/.vuepress/README.md', 
+    './docs/README.md', 
     `---
 home: false
 footer: I'm the hero of interest
