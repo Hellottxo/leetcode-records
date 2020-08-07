@@ -23,7 +23,6 @@ const readDirSync = (path, level) => {
       res.push(item);
     }
   })
-  console.log(res.length);
   return res;
 }
 

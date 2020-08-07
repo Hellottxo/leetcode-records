@@ -11,10 +11,14 @@ script:
     - node generateMD.js
     - yarn build
 after_success:
-    - cd docs/.vuepress/dist
-    - git init
     - git config --global user.name "hellottxo"
     - git config --global user.email "654720416@qq.com"
+    - git checkout docs
+    - git add .
+    - git commit -m 'deploy'
+    - git push
+    - cd docs/.vuepress/dist
+    - git init
     - git checkout docs
     - git add .
     - git commit -m 'deploy'
