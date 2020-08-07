@@ -54,6 +54,18 @@ ${e.solutions}
   });
   const configText = getConfig(config_map.easy, config_map.middle, config_map.hard);
   fs.writeFileSync(configDir, configText);
+  fs.writeFileSync(
+    '.docs/.vuepress/README.md', 
+    `---
+home: false
+footer: I'm the hero of interest
+meta:
+  - name: leetcode-records
+    content: leetcode records
+  - name: js/leetcode
+    content: js/leetcode
+---`
+    )
 }
 
 
