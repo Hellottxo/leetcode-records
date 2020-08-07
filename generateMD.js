@@ -50,7 +50,9 @@ const initialize = async () => {
     fs.writeFileSync(
       `docs/${e.level}/${e.id}.md`,
       `# ${name}
+## Question
 ${content}
+## Answer
 ${e.solutions}
       `
     );
