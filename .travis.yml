@@ -1,15 +1,24 @@
 language: node_js
 node_js:
     - 10
+cache:
+    - yarn
+before_install:
+    - yarn config set registry https://registry.npm.taobao.org
+    - bash mkdir.sh
+install:
+    - yarn install
 script:
-    - node generate.js
+    - node generateMD.js
+    - yarn build
 after_success:
-    - git checkout master
+    - cd  docs/.vuepress/dist
+    - git init
     - git config --global user.name "hellottxo"
     - git config --global user.email "654720416@qq.com"
-    - git add README.md
-    - git commit -m 'docs📝 generate README'
-    - git push --force "https://${GITHUB_TOKEN}@${GH_REF}"
+    - git add -A
+    - git commit -m 'deploy'
+    - git push --force "https://${GITHUB_TOKEN}@${GH_REF}" master:gh-pages
 env:
   global:
     - GH_REF: github.com/Hellottxo/leetcode-records.git

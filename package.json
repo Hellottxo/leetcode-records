@@ -1,0 +1,19 @@
+{
+  "name": "leetcode-records",
+  "version": "1.0.0",
+  "description": "a leetcode-records project",
+  "main": "index.js",
+  "repository": "git@github.com:Hellottxo/leetcode-records.git",
+  "author": "<654720416@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "progress": "^2.0.3",
+    "request": "^2.88.2",
+    "vuepress": "^1.5.3"
+  }
+}
