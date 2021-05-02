@@ -19,7 +19,7 @@ const readDirSync = (path, level) => {
     const info = fs.statSync(elePath);
     if (info.isDirectory()) {
       res = [...res, ...readDirSync(elePath, ele)];
-    } else if (/Q\d+/g.test(ele)) {
+    } else if (/^Q.*js$/g.test(ele)) {
       const item = {
         id: ele.slice(1, -3),
         solutions: '```js\r\n' + fs.readFileSync(elePath).toString() + '\r\n```',
